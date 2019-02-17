@@ -89,6 +89,16 @@ html {
             padding: 8px 6px;
             .font {
                 flex: 6;
+                height: 100%;
+                padding-right: 20px;
+                .info {
+                    width: 100%;
+                    height: 20px;
+                    overflow: hidden;
+                    margin-bottom: 20px;
+                    display: flex;
+                    flex-wrap: wrap;
+                }
             }
             .img {
                 flex: 4;
