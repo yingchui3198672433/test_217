@@ -2,7 +2,7 @@
  * @Author: ZXY 
  * @Date: 2019-02-17 19:33:07 
  * @Last Modified by: ZXY
- * @Last Modified time: 2019-02-17 19:53:02
+ * @Last Modified time: 2019-02-17 19:58:55
  */
 
 var gulp = require('gulp'),
@@ -28,8 +28,12 @@ gulp.task('devJs', function() {
         .pipe(minJs())
         .pipe(gulp.dest('./src/js'))
 });
+// 3. 基于gulp搭建项目开发脚手架， 配置server， 并实现watch自动刷新；
+gulp.task('watch', function() {
+    return gulp.watch('./src/scss/**/**.scss', gulp.series('devScss'))
+});
 
-// 4.使用gulp进行接口的开发，并实现模拟数据；3.基于gulp搭建项目开发脚手架，配置server，并实现watch自动刷新；
+// 4.使用gulp进行接口的开发，并实现模拟数据；
 gulp.task('devServer', function() {
     return gulp.src('src')
         .pipe(server({
@@ -50,8 +54,6 @@ gulp.task('devServer', function() {
         }))
 });
 
-gulp.task('watch', function() {
-    return gulp.src('./src/scss/**/**.scss', gulp.series('devScss'))
-});
+
 
 gulp.task('default', gulp.series('devScss', 'devJs', 'devServer', 'watch'));
